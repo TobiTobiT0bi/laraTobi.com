@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Classes;
 
 class StudentController extends Controller
 {
@@ -13,7 +14,8 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::all();
-        return view('students.index', compact('students'));
+        $classes = Classes::all();
+        return view('students.index', compact('students', 'classes'));
 
         //return view('students.index')->with('students', $students);
     }
@@ -23,7 +25,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        $classes = Classes::all();
+        return view('students.create', compact('classes'));
     }
 
     /**
@@ -33,6 +36,7 @@ class StudentController extends Controller
     {
         $request->validate([
             'name' => 'required|string|min:5|max:100',
+            'class_id' => 'required|string|min:1',
             'age' => 'required|integer|min:1'
         ]);
 
@@ -55,7 +59,8 @@ class StudentController extends Controller
     public function edit(string $id)
     {
         $student = Student::findOrFail($id);
-        return view('students.edit', compact('student'));
+        $classes = Classes::all();
+        return view('students.edit', compact('student', 'classes'));
     }
 
     /**

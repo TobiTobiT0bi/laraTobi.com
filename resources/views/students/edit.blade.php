@@ -13,7 +13,7 @@
 <body class="bg-dark text-white">
 
     <h2 class="text-center p-3 pt-5">
-        Create students
+        Edit students
     </h2>
 
     <div class="container-xxl bg-dark text-white">
@@ -26,6 +26,15 @@
                     <div class="mb-5">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" name="name" value="{{ old('name', $student->name) }}" id="name" class="form-control bg-transparent text-white" required>
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="name" class="form-label">Class ID</label>
+                        <select name="class_id" id="class_id" class="form-select">
+                            @foreach ($classes as $class)
+                                <option value="{{ $class->id }}" {{ old('class_id', $student->class_id ?? '') == $class->id ? 'selected' : '' }}>{{ $class->division }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="mb-5">
