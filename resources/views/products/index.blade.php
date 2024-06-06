@@ -1,3 +1,4 @@
+@extends('layouts.app')
 @section('content')
     <h1 class='text-center p-3 pt-5 text-white'>CRUD de estudiantes</h1>
     <div class="rounded container bg-dark pb-3">
