@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/products');
 });
 
 Route::resource('students', StudentController::class);
 Route::resource('classes', ClassesController::class);
+Route::resource('products', ProductController::class);
