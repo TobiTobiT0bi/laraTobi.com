@@ -35,7 +35,9 @@
                         <tr class="text-center">
                             <td>{{ $student->id }}</td>
                             <td>{{ $student->name }}</td>
-                            <td>{{ $student->class_id}}</td>
+                            @foreach ($classes as $class)
+                                <td>{{ $student->class_id == $class->id ? $class->id :  }}</td>
+                            @endforeach
                             <td>{{ $student->age }}</td>
 
                             <td>
