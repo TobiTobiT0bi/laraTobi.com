@@ -1,14 +1,18 @@
 @extends('layouts.app')
 @section('content')
     @php
-        $value= "";
-        $disabled= "";
-        $required= "required";
-        $hidden="";
-        $actionCateg='Create category';
-        $action='Create';
+        $value = "";
+        $disabled = "";
+        $required = "required";
+        $hidden ="";
+        $objects = $categories;
+        $actionType='Create category';
+        $action ='Create';
         $method = 'POST';
-        $routeVariable="store";
+        $routeVariable ="categories";
+        $routeAction ="store";
+        $name = 'name';
+        $description = '';
     @endphp
-    @include('includes.formcateg')
+    @include('includes.form')
 @endsection

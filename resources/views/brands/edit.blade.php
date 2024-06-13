@@ -1,14 +1,19 @@
 @extends('layouts.app')
 @section('content')
     @php
-        $value= "";
-        $disabled= "";
-        $required= "required";
-        $hidden="";
-        $actionBrand='Update brand';
-        $action='Update';
+        $value = "";
+        $disabled = "";
+        $required = "required";
+        $hidden ="";
+        $objects = $brands;
+        $object = $brand;
+        $actionType='Update brand';
+        $action ='Update';
         $method = 'PUT';
-        $routeVariable="update";
+        $routeVariable ="brands";
+        $routeAction ="update";
+        $name = 'brand';
+        $description = '';
     @endphp
-    @include('includes.formbrand')
+    @include('includes.form')
 @endsection

@@ -1,14 +1,18 @@
 @extends('layouts.app')
 @section('content')
     @php
-        $value= "";
-        $disabled= "";
-        $required= "required";
-        $hidden="";
-        $actionBrand='Create brand';
-        $action='Create';
+        $value = "";
+        $disabled = "";
+        $required = "required";
+        $hidden ="";
+        $objects = $brands;
+        $actionType='Create brand';
+        $action ='Create';
         $method = 'POST';
-        $routeVariable="store";
+        $routeVariable ="brands";
+        $routeAction ="store";
+        $name = 'brand';
+        $description = '';
     @endphp
-    @include('includes.formbrand')
+    @include('includes.form')
 @endsection
