@@ -18,10 +18,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $title
  * @property string $description
  * @property int $price
+ * @property int $brand_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
  *
+ * @property Brand $brand
+ * @property Collection|Brand[] $brands
  * @property Collection|Category[] $categories
  *
  * @package App\Models
@@ -32,19 +35,27 @@ class Product extends Model
 	protected $table = 'products';
 
 	protected $casts = [
-		'price' => 'int'
+		'price' => 'int',
+		'brand_id' => 'int'
 	];
 
 	protected $fillable = [
 		'title',
 		'description',
 		'price',
-        'brand_id'
+		'brand_id'
 	];
 
-    public function brand(){
-        return $this->belongsTo(Brand::class);
-    }
+	public function brand()
+	{
+		return $this->belongsTo(Brand::class);
+	}
+
+	public function brands()
+	{
+		return $this->belongsToMany(Brand::class, 'brand_products')
+					->withPivot('id');
+	}
 
 	public function categories()
 	{

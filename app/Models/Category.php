@@ -12,11 +12,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Category
- *
+ * 
  * @property int $id
  * @property int $parent_id
  * @property string $name
- *
+ * @property string|null $deleted_at
+ * 
  * @property Category $category
  * @property Collection|Category[] $categories
  * @property Collection|Product[] $products
@@ -25,9 +26,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Category extends Model
 {
+	use SoftDeletes;
 	protected $table = 'categories';
 	public $timestamps = false;
-    use SoftDeletes;
 
 	protected $casts = [
 		'parent_id' => 'int'
@@ -38,12 +39,12 @@ class Category extends Model
 		'name'
 	];
 
-	public function parent()
+	public function category()
 	{
 		return $this->belongsTo(Category::class, 'parent_id');
 	}
 
-	public function children()
+	public function categories()
 	{
 		return $this->hasMany(Category::class, 'parent_id');
 	}
