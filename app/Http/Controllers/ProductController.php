@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -13,8 +15,9 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        //dd($products);
-        return view('products.index', compact('products'));
+        $brands = Brand::all();
+        //($products);
+        return view('products.index', compact('products', 'brands'));
     }
 
     /**
@@ -22,7 +25,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $brands = Brand::all();
+        return view('products.create', compact('brands'));
     }
 
     /**
@@ -30,7 +34,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|min:5|max:100',
+            'description' => 'required|string|min:1',
+            'price' => 'required|integer|min:1',
+            'brand_id' => 'required|integer'
+        ]);
+
+        Product::create($request->all());
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -46,7 +59,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $brands = Brand::all();
+        return view('products.edit', compact('product', 'brands'));
     }
 
     /**
@@ -54,7 +69,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|min:5|max:100',
+            'description' => 'required|string|min:1',
+            'price' => 'required|integer|min:1',
+            'brand_id' => 'required|integer'
+        ]);
+
+        $product = Product::findOrFail($id);
+
+        $product->update($request->all());
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -62,6 +88,8 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect()->route('products.index');
     }
 }

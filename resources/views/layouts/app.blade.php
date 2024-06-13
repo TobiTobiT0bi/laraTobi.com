@@ -12,10 +12,12 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script src="{{ asset('js/alertify.min.js') }}"></script>
-    <title>CRUD clases</title>
+    <title>CRUD</title>
 </head>
 
-<body>
+<body class="bg-dark text-white">
+    @include('includes.navigation')
+
     <div class="container">
         @yield('content')
     </div>

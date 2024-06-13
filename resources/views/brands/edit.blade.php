@@ -5,10 +5,10 @@
         $disabled= "";
         $required= "required";
         $hidden="";
-        $actionProd='Update product';
-        $action = 'Update';
+        $actionBrand='Update brand';
+        $action='Update';
         $method = 'PUT';
         $routeVariable="update";
     @endphp
-    @include('includes.formprod')
+    @include('includes.formbrand')
 @endsection

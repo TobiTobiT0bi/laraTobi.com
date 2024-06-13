@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    <h1 class='text-center p-3 pt-5 text-white'>CRUD de productos</h1>
+    <h1 class='text-center p-3 pt-5 text-white'>CRUD de marcas</h1>
     <div class="rounded container bg-dark pb-3">
         <div class="container-md">
-            <a href="{{ route('products.create') }}" class="btn btn-success mt-3 mb-3 me-3">CREATE</a>
+            <a href="{{ route('brands.create') }}" class="btn btn-success mt-3 mb-3 me-3">CREATE</a>
         </div>
 
         <div class="container-sm">
@@ -11,27 +11,20 @@
                 <thead class="table-dark">
                     <tr class="text-center">
                         <th>ID</th>
-                        <th>title</th>
-                        <th>brand</th>
+                        <th>NAME</th>
                         <th>ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
+                    @foreach ($brands as $brand)
                         <tr class="text-center">
-                            <td>{{ $product->id }}</td>
-                            <td>{{ $product->title }}</td>
-                            <td>{{ $product->brand->brand }}</td>
-                            {{-- @foreach ($classes as $class)
-                                <td>{{ $product->class_id == $class->id ? $class->id :  }}</td>
-                            @endforeach --}}
-                            {{-- <td>{{ $product->age }}</td> --}}
-
+                            <td>{{ $brand->id }}</td>
+                            <td>{{ $brand->brand }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{ route('products.edit', $product->id) }}"
+                                    <a href="{{ route('brands.edit', $brand->id) }}"
                                         class="btn btn-primary mt-1 me-1 pe-3 ps-3">EDIT</a>
-                                    <button type="button" onclick="confirmDelete('{{ $product->id }}')"
+                                    <button type="button" onclick="confirmDelete('{{ $brand->id }}')"
                                         class="btn btn-danger mt-1 pe-3 ps-3">DELETE</button>
                                 </div>
                             </td>
