@@ -11,8 +11,6 @@ Route::get('/', function () {
     return redirect('/products');
 });
 
-Route::resource('students', StudentController::class);
-Route::resource('classes', ClassesController::class);
 Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('brands', BrandController::class);
