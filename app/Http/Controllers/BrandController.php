@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 
@@ -29,13 +30,10 @@ class BrandController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BrandRequest $request)
     {
-        $request->validate([
-            'brand' => 'required|string|min:1|max:100'
-        ]);
 
-        Brand::create($request->all());
+        Brand::create($request->validated());
 
         return redirect()->route('brands.index');
     }
@@ -61,15 +59,12 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(BrandRequest $request, string $id)
     {
-        $request->validate([
-            'brand' => 'required|string|min:1|max:100'
-        ]);
 
         $brand = Brand::findOrFail($id);
 
-        $brand->update($request->all());
+        $brand->update($request->validated());
 
         return redirect()->route('brands.index');
     }
