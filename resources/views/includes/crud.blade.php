@@ -27,7 +27,7 @@
                             <td>{{ $obj->id }}</td>
                             <td>{{ $obj->$name }}</td>
                             @if ($routeVariable == 'products')
-                                <td>{{ $obj->brand->brand }}</td>
+                                <td>{{ $obj->brand->brand }}--{{ $obj->categories->first()->name }}</td>
                             @endif
                             @if ($routeVariable !== 'brands')
                                 <td>{{ $obj->$secondAttr ?? '' }}</td>
@@ -76,4 +76,3 @@
             });
         }
     </script>
-@endsection

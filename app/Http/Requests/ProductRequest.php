@@ -38,14 +38,14 @@ class ProductRequest extends FormRequest
     public function handle()
     {
         // Crea un nuevo usuario
-        Product::create([
+        /* Product::create([
             'title' => $this->validated()['title'],
             'description' => $this->validated()['description'],
             'price' => $this->validated()['price'],
             'brand_id' => $this->validated()['brand_id']
-        ]);
+        ]); */
 
         // Redirige a la página de éxito
-        return redirect()->route('users.index');
+        //return redirect()->route('users.index');
     }
 }

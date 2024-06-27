@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Product
- *
+ * 
  * @property int $id
  * @property string $title
  * @property string $description
@@ -22,9 +22,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
- *
+ * 
  * @property Brand $brand
- * @property Collection|Brand[] $brands
  * @property Collection|Category[] $categories
  *
  * @package App\Models
@@ -49,12 +48,6 @@ class Product extends Model
 	public function brand()
 	{
 		return $this->belongsTo(Brand::class);
-	}
-
-	public function brands()
-	{
-		return $this->belongsToMany(Brand::class, 'brand_products')
-					->withPivot('id');
 	}
 
 	public function categories()

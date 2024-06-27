@@ -44,13 +44,6 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained();
             $table->unique(['category_id', 'product_id']);
         });
-
-        Schema::create('brand_product', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('brand_id')->constrained();
-            $table->foreignId('product_id')->constrained();
-            $table->unique(['brand_id', 'product_id']);
-        });
     }
 
     /**

@@ -54,6 +54,9 @@
                                     <option value="{{ $brand->id }}" {{ old('brand_id', $object->brand_id ?? '') == $brand->id ? 'selected' : '' }}>{{ $brand->brand }}</option>
                                 @endforeach
                             </select>
+                            @foreach ($categories as $category)
+                                {{ $category->name }} <input type="checkbox" name="categories_id[]" value="{{ $category->id }}">
+                            @endforeach
                         </div>
                         @break
 

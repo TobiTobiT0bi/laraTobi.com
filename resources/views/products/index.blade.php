@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'productos')
 @section('content')
     @php
         $routeVariable= "products";
@@ -10,3 +11,4 @@
 
     @endphp
     @include('includes.crud')
+@endsection

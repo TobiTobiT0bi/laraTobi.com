@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -24,7 +25,8 @@ class ProductController extends Controller
     public function create()
     {
         $brands = Brand::all();
-        return view('products.create', compact('brands'));
+        $categories = Category::all(); // Fetch all categories
+        return view('products.create', compact('brands','categories'));
     }
 
     /**
@@ -32,8 +34,8 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $product = Product::create($request->validated());
-        $product->categories()->sync($request->category_id);
+        $product = Product::create($request->all());
+        $product->categories()->sync($request->categories_id);
 
         return redirect()->route('products.index');
     }
