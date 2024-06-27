@@ -6,6 +6,15 @@
     <div class="d-flex justify-content-center">
         <div class="col align-self-center">
             <form method="POST" action="{{ route( $routeVariable . '.' . $routeAction, $object->id ?? null) }}">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li >{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 @csrf
                 @if ($method !== 'POST')
                     @method($method)
@@ -13,7 +22,7 @@
 
                 <div class="mb-5">
                     <label for="{{ $name }}" class="form-label"> {{ $name }}</label>
-                    <input type="text" name="{{ $name }}" value="{{ old($name, $object->$name ?? '') }}" id="{{ $name }}" class="form-control bg-transparent text-white" {{ $disabled }} {{ $required }}>
+                    <input type="text" name="{{ $name }}" value="{{ old($name, $object->$name ?? '') }}" id="{{ $name }}" class="form-control bg-transparent text-white" {{ $disabled }}>
                 </div>
 
                 @switch($routeVariable)
@@ -30,12 +39,12 @@
                     @case('products')
                         <div class="mb-5">
                             <label for="{{ $description }}" class="form-label">description</label>
-                            <input type="text" name="{{ $description }}" value="{{ old($description, $object->$description ?? '') }}" id="{{ $description }}" class="form-control bg-transparent text-white" {{ $disabled }} {{ $required }}>
+                            <input type="text" name="{{ $description }}" value="{{ old($description, $object->$description ?? '') }}" id="{{ $description }}" class="form-control bg-transparent text-white" {{ $disabled }}>
                         </div>
 
                         <div class="mb-5">
                             <label for="price" class="form-label">price</label>
-                            <input type="text" name="price" value="{{ old('price', $object->$price ?? '') }}" id="price" class="form-control bg-transparent text-white" {{ $disabled }} {{ $required }}>
+                            <input type="text" name="price" value="{{ old('price', $object->$price ?? '') }}" id="price" class="form-control bg-transparent text-white" {{ $disabled }}>
                         </div>
 
                         <div class="mb-5">
