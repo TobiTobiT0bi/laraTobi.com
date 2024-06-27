@@ -32,7 +32,8 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        Product::create($request->validated());
+        $product = Product::create($request->validated());
+        $product->categories()->sync($request->category_id);
 
         return redirect()->route('products.index');
     }
