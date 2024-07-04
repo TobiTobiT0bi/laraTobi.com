@@ -55,7 +55,8 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $brands = Brand::all();
-        return view('products.edit', compact('product', 'brands'));
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'brands', 'categories'));
     }
 
     /**
