@@ -5,7 +5,7 @@
 <div class="container-xxl bg-dark text-white">
     <div class="d-flex justify-content-center">
         <div class="col align-self-center">
-            <form method="POST" action="{{ route( $routeVariable . '.' . $routeAction, $object->id ?? null) }}">
+            <form method="{{ $method }}" action="{{ route( $routeVariable . '.' . $routeAction, $object->id ?? null) }}">
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -16,9 +16,9 @@
                     </div>
                 @endif
                 @csrf
-                @if ($method !== 'POST')
+                {{-- @if ($method !== 'POST')
                     @method($method)
-                @endif
+                @endif --}}
 
                 <div class="mb-5">
                     <label for="{{ $name }}" class="form-label"> {{ $name }}</label>

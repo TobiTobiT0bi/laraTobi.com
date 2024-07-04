@@ -1,10 +1,16 @@
 @extends('layouts.app')
 @section('title', 'productos')
 @section('content')
-    @include('includes.crud', ['routeVariable' => "products",
-                                'conditionalTitle' => "BRAND",
-                                'secondAttr'  => "description",
-                                'price'  => "price",
-                                'objects'  => $products,
-                                'name'  => "title"])
+    <x-crud.crud-table :$heads title="CRUD productos" routeVariable="products">
+            @foreach($products as $product)
+                <tr class="text-center">
+                    <td>{{ $product->id }}</td>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->brand }}</td>
+                    <td>{{ $product->description }}</td>
+                    <td>{{ $product->price }}</td>
+                    <x-crud.crud-buttons :$object="$product" routeVariable="products"\>
+                </tr>
+            @endforeach
+    </x-crud.crud-table>
 @endsection

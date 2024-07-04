@@ -14,8 +14,8 @@ class BrandController extends Controller
     public function index()
     {
         $brands = Brand::all();
-        //dd($products);
-        return view('brands.index', compact('brands'));
+        $heads = ['ID', 'NAME', 'ACTIONS'];
+        return view('brands.index', compact('brands', 'heads'));
     }
 
     /**

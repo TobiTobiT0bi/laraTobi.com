@@ -14,8 +14,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        //dd($products);
-        return view('categories.index', compact('categories'));
+        $heads = ['ID', 'PARENT_ID', 'NAME', 'ACTIONS'];
+        return view('categories.index', compact('categories', 'heads'));
     }
 
     /**
