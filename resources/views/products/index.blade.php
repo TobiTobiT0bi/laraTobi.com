@@ -1,14 +1,10 @@
 @extends('layouts.app')
 @section('title', 'productos')
 @section('content')
-    @php
-        $routeVariable= "products";
-        $conditionalTitle= "BRAND";
-        $secondAttr = "description";
-        $price = "price";
-        $objects = $products;
-        $name = "title";
-
-    @endphp
-    @include('includes.crud')
+    @include('includes.crud', ['routeVariable' => "products",
+                                'conditionalTitle' => "BRAND",
+                                'secondAttr'  => "description",
+                                'price'  => "price",
+                                'objects'  => $products,
+                                'name'  => "title"])
 @endsection
