@@ -7,7 +7,7 @@
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->parent_id }}</td>
                     <td>{{ $category->name }}</td>
-                    <x-crud.crud-buttons :$object="$category" routeVariable="categories"\>
+                    <x-crud.crud-buttons :object="$category" routeVariable="categories" />
                 </tr>
             @endforeach
     </x-crud.crud-table>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @include('includes.form', ['value' => "",
+    {{-- @include('includes.form', ['value' => "",
                                 'disabled' => "",
                                 'required' => "required",
                                 'hidden' =>"",
@@ -13,5 +13,5 @@
                                 'routeAction' =>"update",
                                 'name' => 'title',
                                 'description' => 'description',
-                                'price' => "price"])
+                                'price' => "price"]) --}}
 @endsection

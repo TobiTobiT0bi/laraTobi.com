@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @include('includes.form', ['value' => "",
+    {{-- @include('includes.form', ['value' => "",
                                 'disabled' => "",
                                 'required' => "required",
                                 'hidden' =>"",
@@ -12,5 +12,7 @@
                                 'routeVariable' =>"brands",
                                 'routeAction' =>"update",
                                 'name' => 'brand',
-                                'description' => ''])
+                                'description' => '']) --}}
+
+    <x-form.form method="PUT" type="Update brand" action="Update" routeVariable="brands" routeAction="update" name="brand" :object="$brand" />
 @endsection

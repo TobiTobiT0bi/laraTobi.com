@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
-use Illuminate\Http\Request;
-
 class BrandController extends Controller
 {
     /**
@@ -43,7 +41,8 @@ class BrandController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $brand = Brand::findOrFail(3);
+        dd($brand);
     }
 
     /**
@@ -52,8 +51,8 @@ class BrandController extends Controller
     public function edit(string $id)
     {
         $brand = Brand::findOrFail($id);
-        $brands = Brand::all();
-        return view('brands.edit', compact('brand', 'brands'));
+        //$brands = Brand::all();
+        return view('brands.edit', compact('brand'));
     }
 
     /**
@@ -66,7 +65,7 @@ class BrandController extends Controller
 
         $brand->update($request->validated());
 
-        return redirect()->route('brands.index');
+        return view('brands.index');
     }
 
     /**

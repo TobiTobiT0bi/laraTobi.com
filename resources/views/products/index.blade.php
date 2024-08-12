@@ -5,11 +5,11 @@
             @foreach($products as $product)
                 <tr class="text-center">
                     <td>{{ $product->id }}</td>
-                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->title }}</td>
                     <td>{{ $product->brand }}</td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
-                    <x-crud.crud-buttons :$object="$product" routeVariable="products"\>
+                    <x-crud.crud-buttons :object="$product" routeVariable="products" />
                 </tr>
             @endforeach
     </x-crud.crud-table>

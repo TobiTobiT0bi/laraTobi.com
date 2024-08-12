@@ -1,4 +1,4 @@
-@props(['routeVariable', 'object'])
+@props(['object', 'routeVariable'])
 
 <td>
     <div class="d-flex justify-content-center">

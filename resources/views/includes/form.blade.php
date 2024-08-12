@@ -1,3 +1,5 @@
+<h1> hola lol </h1>
+
 <h2 class="text-center p-3 pt-5">
     {{ $actionType }}
 </h2>

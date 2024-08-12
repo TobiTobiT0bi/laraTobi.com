@@ -1,4 +1,4 @@
-@props(['method', 'type', 'action', 'routeVariable', 'routeAction', 'name'])
+@props(['method', 'type', 'action', 'routeVariable', 'routeAction', 'name', 'object'])
 
 <h2 class="text-center p-3 pt-5">
     {{ $type }}
@@ -8,6 +8,9 @@
     <div class="d-flex justify-content-center">
         <div class="col align-self-center">
             <form method="{{ $method }}" action="{{ route( $routeVariable . '.' . $routeAction, $object->id ?? null) }}">
+                @if ($method !== 'POST')
+                    @method($method)
+                @endif
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
