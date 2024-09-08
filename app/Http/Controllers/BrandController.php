@@ -65,7 +65,7 @@ class BrandController extends Controller
 
         $brand->update($request->validated());
 
-        return view('brands.index');
+        return redirect()->route('brand.index');
     }
 
     /**

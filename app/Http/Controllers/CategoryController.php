@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -42,7 +41,7 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        dd(request());
     }
 
     /**
@@ -62,7 +61,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        $category->update($request->valdiated());
+        $category->update($request->validated());
 
         return redirect()->route('categories.index');
     }

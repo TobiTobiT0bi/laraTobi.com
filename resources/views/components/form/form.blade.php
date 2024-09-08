@@ -7,7 +7,7 @@
 <div class="container-xxl bg-dark text-white">
     <div class="d-flex justify-content-center">
         <div class="col align-self-center">
-            <form method="{{ $method }}" action="{{ route( $routeVariable . '.' . $routeAction, $object->id ?? null) }}">
+            <form method="POST" action="{{ route( $routeVariable . '.' . $routeAction, $object->id ?? null) }}">
                 @if ($method !== 'POST')
                     @method($method)
                 @endif

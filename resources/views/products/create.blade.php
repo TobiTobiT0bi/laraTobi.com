@@ -14,7 +14,7 @@
                                 'description' => 'description',
                                 'price' => 'price']) --}}
 
-<x-form.form method="POST" type="Create Product" action="create", routeVariable="products", routeAction="store" name="title">
+<x-form.form method="POST" type="Create Product" action="create" routeVariable="products" routeAction="store" name="title">
 
     <div class="mb-5">
         <label for="description" class="form-label">description</label>

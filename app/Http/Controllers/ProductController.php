@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        $heads = ['ID', 'NAME', 'BRAND', 'DESCRIPTION', 'PRICE', 'ACTIONS'];
+        $heads = ['ID', 'NAME', 'BRAND', 'CATEGORIES' ,'DESCRIPTION', 'PRICE', 'ACTIONS'];
         return view('products.index', compact('products', 'heads'));
     }
 
@@ -34,8 +34,10 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        /* dd($request); */
         $product = Product::create($request->all());
         $product->categories()->sync($request->categories_id);
+
 
         return redirect()->route('products.index');
     }
@@ -68,6 +70,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         $product->update($request->validated());
+        $product->categories()->sync($request->categories_id);
 
         return redirect()->route('products.index');
     }
